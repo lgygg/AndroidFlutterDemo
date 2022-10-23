@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Test"
+include ':app'
+include ':crash'
+
+
+// 加入如下代码
+setBinding(new Binding([gradle: this]))
+evaluate(new File(settingsDir.parent, "/Test/my_flutter/.android/include_flutter.groovy"))//my_flutter是flutter模块项目名称
+
+include ':my_flutter'
